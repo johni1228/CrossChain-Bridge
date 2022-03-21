@@ -15,10 +15,17 @@ async function main() {
 
   // We get the contract to deploy
 
+  const coordinator = {
+    x1: 3,
+    y1: 3,
+    x2: 10,
+    y2: 10
+  }
+
 
 
   const Votting = await hre.ethers.getContractFactory("Votting");
-  const votting = await Votting.deploy();
+  const votting = await Votting.deploy(coordinator);
 
   await votting.deployed();
 

@@ -80,6 +80,7 @@ contract Votting is Ownable{
     _map.owner = owner();
     (_map.plusCoordinator).push(_coord);
   }
+  
   // if _coord1 include _coord2, return true, else return false;
   function isIncludeCoordinator(Coordinator memory _coord1, Coordinator memory _coord2) private pure returns (bool) { 
     if( _coord1.x1 >= _coord2.x1 
