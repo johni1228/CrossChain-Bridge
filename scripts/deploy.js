@@ -95,18 +95,31 @@ async function main() {
   */
 
   /* --------------------Bridge contract ---------------------- */
-  /*const Bridge = await hre.ethers.getContractFactory("Bridge");
-  const bridge = await Bridge.deploy(controller.address);
+  const Bridge = await hre.ethers.getContractFactory("Bridge");
+  const bridge = await Bridge.deploy(
+    "0x08C864D7eeC401D0f98A6a79D86Db1F59d7c988f",
+    "0x7c058BeF1348f8944a1C2C0afb5bc164a07Ff4F6",
+    "0x37E950F09a9C6e64507D97C50ECEFC9a3b51a947",
+    "0xBE45B4C494AE9e05821295A606341ac43c00E8AA",
+    "0x188438E7C850ff20Dc4177Df942286962898b7dE",
+    "0x51eDDBeFD3c237F3144ef6e95B3c5Fa80d86a490",
+    "0x0000000000000000000000000000000000000000");
 
   await bridge.deployed();
 
   await hre.run('verify:verify', {
     address: bridge.address,
-    constructorArguments: [controller.address],
+    constructorArguments: ["0x08C864D7eeC401D0f98A6a79D86Db1F59d7c988f",
+    "0x7c058BeF1348f8944a1C2C0afb5bc164a07Ff4F6",
+    "0x37E950F09a9C6e64507D97C50ECEFC9a3b51a947",
+    "0xBE45B4C494AE9e05821295A606341ac43c00E8AA",
+    "0x188438E7C850ff20Dc4177Df942286962898b7dE",
+    "0x51eDDBeFD3c237F3144ef6e95B3c5Fa80d86a490",
+    "0x0000000000000000000000000000000000000000"],
   });
 
   console.log("Bridge deployed to:", bridge.address);
-  */
+  
 
 }
 
