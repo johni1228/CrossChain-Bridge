@@ -22,20 +22,28 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
-  networks: {
-    hardhat: {
-      forking: {
-        url: process.env.AVALANCHE_URL
-      }
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
     },
-    ropsten: {
-      url: process.env.ROPSTEN_URL || "",
+  },
+  networks: {
+    kovan: {
+      url: process.env.KOVAN_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
-    avaxTest: {
-      url: process.env.AVALANCHE_TEST_URL || "",
+    mumbai: {
+      url: process.env.MUMBAI_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    bscTest: {
+      url: process.env.BSCTEST_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
@@ -50,6 +58,6 @@ module.exports = {
     currency: "USD",
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: process.env.BSCTESTSCAN_API_KEY,
   },
 };

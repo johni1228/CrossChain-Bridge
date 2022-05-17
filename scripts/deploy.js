@@ -6,30 +6,108 @@
 const hre = require("hardhat");
 
 async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
 
-  // We get the contract to deploy
+  /* --------------------Token Contract --------------------- */
+  /*
+  const Token = await hre.ethers.getContractFactory("Token");
+  const token = await Token.deploy("BridgeToken", "BT");
 
-  const coordinator = {
-    x1: 3,
-    y1: 3,
-    x2: 10,
-    y2: 10
-  }
+  await token.deployed();
+
+  await hre.run('verify:verify', {
+    address: token.address,
+    constructorArguments: ["BridgeToken", "BT"],
+  });
+
+  console.log("Token deployed to:", token.address);
+  */
 
 
+  /* --------------------Controller Contract -------------- */
+  /*
+  const Controller = await hre.ethers.getContractFactory("Controller");
+  const controller = await Controller.deploy();
 
-  const Votting = await hre.ethers.getContractFactory("Votting");
-  const votting = await Votting.deploy(coordinator);
+  await controller.deployed();
 
-  await votting.deployed();
+  await hre.run('verify:verify', {
+    address: controller.address,
+    constructorArguments: [],
+  });
 
-  console.log("Convert deployed to:", votting.address);
+  console.log("Controller deployed to:", controller.address);
+  */
+
+  /* --------------------Settings contract ---------------------- */
+  /*const Settings = await hre.ethers.getContractFactory("Settings");
+  const settings = await Settings.deploy(controller.address, feeAddress);
+
+  await settings.deployed();
+
+  await hre.run('verify:verify', {
+    address: settings.address,
+    constructorArguments: [controller.address, feeAddress],
+  });
+
+  console.log("Settings deployed to:", settings.address);
+  */
+
+  /* --------------------FeeController contract ---------------------- */
+  /*const FeeController = await hre.ethers.getContractFactory("FeeController");
+  const feeController = await FeeController.deploy(settings.address, controller.address);
+
+  await feeController.deployed();
+
+  await hre.run('verify:verify', {
+    address: feeController.address,
+    constructorArguments: [settings.address, controller.address],
+  });
+
+  console.log("FeeController deployed to:", feeController.address);
+  */
+
+  /* --------------------Deployer contract ---------------------- */
+  /*const Deployer = await hre.ethers.getContractFactory("Deployer");
+  const deployer = await Deployer.deploy(controller.address);
+
+  await deployer.deployed();
+
+  await hre.run('verify:verify', {
+    address: deployer.address,
+    constructorArguments: [controller.address],
+  });
+
+  console.log("Deployer deployed to:", deployer.address);
+  */
+
+  /* --------------------BridgePool contract ---------------------- */
+  /*const BridgePool = await hre.ethers.getContractFactory("BridgePool");
+  const bridgePool = await BridgePool.deploy(controller.address);
+
+  await bridgePool.deployed();
+
+  await hre.run('verify:verify', {
+    address: bridgePool.address,
+    constructorArguments: [controller.address],
+  });
+
+  console.log("BridgePool deployed to:", bridgePool.address);
+  */
+
+  /* --------------------Bridge contract ---------------------- */
+  /*const Bridge = await hre.ethers.getContractFactory("Bridge");
+  const bridge = await Bridge.deploy(controller.address);
+
+  await bridge.deployed();
+
+  await hre.run('verify:verify', {
+    address: bridge.address,
+    constructorArguments: [controller.address],
+  });
+
+  console.log("Bridge deployed to:", bridge.address);
+  */
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
